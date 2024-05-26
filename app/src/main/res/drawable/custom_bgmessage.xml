@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape>
+            <solid android:color="#CFCFCF"/> <!-- Серый цвет -->
+            <corners android:radius="8dp"/> <!-- Закругление краев на 8dp -->
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/dictation"
+        android:gravity="right|center_vertical"
+        android:right="15dp" /> <!-- Расположение иконки внутри EditText с отступом слева -->
+</layer-list>

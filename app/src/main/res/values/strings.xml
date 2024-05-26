@@ -1,3 +1,41 @@
 <resources>
-    <string name="app_name">Kursovaya</string>
+    <string name="app_name">ReKappa</string>
+    <string name="text1">Quick Delivery At Your Doorstep</string>
+    <string name="text2">Enjoy quick pick-up and delivery to your destination</string>
+    <string name="text3">Flexible Payment</string>
+    <string name="text4">Different modes of payment either before and after delivery without stress</string>
+    <string name="text5">Real-time Tracking</string>
+    <string name="text6">Track your packages/items from the comfort of your home till final destination</string>
+    <string name="text7">Already have an account?</string>
+    <string name="text8">Sign In</string>
+    <string name="text9">Create an account</string>
+    <string name="text10">Complete the sign up process to get started</string>
+    <string name="text11">Full name</string>
+    <string name="text12">Phone Number</string>
+    <string name="text13">Email Addres</string>
+    <string name="text14">Password</string>
+    <string name="text15">Confirm Password</string>
+    <string name="text16">+7(999)999-99-99</string>
+    <string name="text17">**********@mail.ru</string>
+    <string name="text18">**********</string>
+    <string name="text19">Ivanov Ivan</string>
+    <string name="text20">By ticking this box, you agree to our Terms and conditions and private policy</string>
+    <string name="text21">or sign in using</string>
+    <string name="text22">Welcome Back</string>
+    <string name="text23">Fill in your email and password to continue</string>
+    <string name="text24">Remember password</string>
+    <string name="text25">Forgot Password?</string>
+    <string name="text27">Sign Up</string>
+    <string name="text28">Forgot Password</string>
+    <string name="text29">Enter your email address</string>
+    <string name="text30">Remember password? Back to </string>
+    <string name="text31">Sign In</string>
+    <string name="text32">New Password</string>
+    <string name="text33">Enter new password</string>
+    <string name="btnNext">Next</string>
+    <string name="btnSkip">Skip</string>
+    <string name="btnsignup">Sign Up</string>
+    <string name="btnlogin">Log in</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

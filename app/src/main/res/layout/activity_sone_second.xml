@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:onClick="onClickNextAct"
+    android:statusBarColor="@color/white"
+    tools:context=".SOneSecond_Activity">
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/text1"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/text3"
+        android:textAlignment="center"
+        android:textColor="#0560FA"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/text6"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/text2"
+        android:fontFamily="@font/roboto"
+        android:text="@string/text4"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text5"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/btn_skip_style"
+        android:backgroundTint="#0560FA"
+        android:onClick="onClickNextAct"
+        android:text="@string/btnNext"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        app:cornerRadius="4.69dp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btn_skip"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_skip"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginBottom="70dp"
+        android:background="@drawable/btn_skip_style"
+        android:onClick="onClickSkipSOne"
+        android:text="@string/btnSkip"
+        android:textAllCaps="false"
+        android:textColor="#0560FA"
+        android:textSize="14sp"
+        app:cornerRadius="4.69dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="#0560FA" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="111dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img2" />
+</androidx.constraintlayout.widget.ConstraintLayout>
