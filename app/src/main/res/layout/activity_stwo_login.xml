@@ -15,7 +15,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="140dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/text22"
+        android:text="хуй пизда"
         android:textColor="#3A3A3A"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
