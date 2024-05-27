@@ -18,7 +18,6 @@ class SOneFirst_Activity : AppCompatActivity() {
 
     }
     fun onClickSkipSOne(view: View){
-
         val intent = Intent(this, session_four_wallet::class.java)
         startActivity(intent)
 
