@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Kursovaya" parent="Base.Theme.Kursovaya" />
+
+    <style name="RadioBtnStl" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">#0560FA</item>
+        <item name="android:textColorPrimary">#0560FA</item>
+    </style>
 </resources>
