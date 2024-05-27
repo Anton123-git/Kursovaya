@@ -8,7 +8,6 @@ import android.view.View
 class SOneFirst_Activity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_ReKappa1)
         setContentView(R.layout.activity_sone_first)
     }
 
