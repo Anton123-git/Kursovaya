@@ -7,6 +7,7 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Button
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 
@@ -33,6 +34,13 @@ class STwoSignUp_Activity : AppCompatActivity() {
         )
 
         checkBox.text = spannable
+
+
+
+        val signup = findViewById<Button>(R.id.btn_signup)
+        signup.setOnClickListener{
+            startActivity(Intent(this, main::class.java))
+        }
     }
 
     fun onClickNextAct(view: View){

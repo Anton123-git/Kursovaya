@@ -72,7 +72,7 @@
             android:layout_marginTop="50dp"
             android:background="@drawable/btn_signup_gray"
             android:fontFamily="@font/roboto_bold"
-            android:text="@string/btnsignup"
+            android:text="Send OTP"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
