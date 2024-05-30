@@ -50,6 +50,7 @@
                         android:id="@+id/imageView8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_card" />
 
@@ -57,6 +58,7 @@
                         android:id="@+id/imageView2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_bank" />
 
@@ -64,6 +66,7 @@
                         android:id="@+id/imageView7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_weight="1"
                         android:src="@drawable/ic_transfer" />
                 </LinearLayout>
@@ -182,7 +185,7 @@
                             android:textColor="#3A3A3A" />
 
                         <TextView
-                            android:id="@+id/textView4"
+                            android:id="@+id/balance"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
@@ -234,7 +237,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>

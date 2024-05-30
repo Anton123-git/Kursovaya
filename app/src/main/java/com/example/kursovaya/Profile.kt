@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.core.content.ContextCompat
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,8 +29,29 @@ class Profile : Fragment() {
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
+
+
         }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val hideBal = view.findViewById<ImageView>(R.id.hideBal)
+        val balance = view.findViewById<TextView>(R.id.balance)
+
+        hideBal.setOnClickListener {
+            if (hideBal.drawable.constantState?.let { it == ContextCompat.getDrawable(hideBal.context, R.drawable.eye)?.constantState } == true) {
+                balance.text = "*********"
+            } else {
+                balance.text = "Your balance"
+            }
+        }
+
+
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -4,115 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".STwoForgotPass_Activity">
 
-    <TextView
-        android:id="@+id/text28"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="140dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/text28"
-        android:textColor="#3A3A3A"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text29"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/text29"
-        android:textColor="#A7A7A7"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text28" />
-
-    <TextView
-        android:id="@+id/text13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/text13"
-        android:textColor="#A7A7A7"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text29" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress2"
-        android:layout_width="0dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/inputstyle"
-        android:ems="10"
-        android:fontFamily="@font/roboto_medium"
-        android:hint="@string/text17"
-        android:inputType="textEmailAddress"
-        android:paddingLeft="10dp"
-        android:textColorHint="#CFCFCF"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text13" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_signup"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="25dp"
-        android:background="@drawable/btn_signup_gray"
-        android:fontFamily="@font/roboto_bold"
-        android:text="@string/btnsignup"
-        android:textAllCaps="false"
-        android:textColor="#FFFFFF"
-        android:textSize="14sp"
-        app:cornerRadius="4.69dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
-
-    <TextView
-        android:id="@+id/text30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:contentDescription="@string/text7"
-        android:fontFamily="@font/roboto"
-        android:text="@string/text30"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
-
-    <TextView
-        android:id="@+id/text31"
-        android:layout_width="48dp"
-        android:layout_height="20dp"
-        android:layout_marginStart="5dp"
-        android:contentDescription="@string/text8"
-        android:fontFamily="@font/roboto"
-        android:onClick="onClickSignUp"
-        android:text="@string/text31"
-        android:textColor="#0560F9"
-        app:layout_constraintBaseline_toBaselineOf="@+id/text30"
+        android:foregroundGravity="center|center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/text30" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.013">
+
+        <TextView
+            android:id="@+id/text28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/text28"
+            android:textColor="#3A3A3A"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/text29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/text29"
+            android:textColor="#A7A7A7"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/text13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/text13"
+            android:textColor="#A7A7A7"
+            android:textSize="14sp" />
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/inputstyle"
+            android:ems="10"
+            android:fontFamily="@font/roboto_medium"
+            android:hint="@string/text17"
+            android:inputType="textEmailAddress"
+            android:paddingLeft="10dp"
+            android:textColorHint="#CFCFCF"
+            android:textSize="12sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_signup_gray"
+            android:fontFamily="@font/roboto_bold"
+            android:text="Send OTP"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:cornerRadius="4.69dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0"
+                android:contentDescription="@string/text7"
+                android:fontFamily="@font/roboto"
+                android:text="@string/text30" />
+
+            <TextView
+                android:id="@+id/text31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:contentDescription="@string/text8"
+                android:fontFamily="@font/roboto"
+                android:onClick="onClickSignUp"
+                android:text="@string/text31"
+                android:textColor="#0560F9" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
