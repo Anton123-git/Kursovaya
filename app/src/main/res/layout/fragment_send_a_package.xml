@@ -251,7 +251,7 @@
                         android:src="@drawable/arrow_square_right" />
 
                     <TextView
-                        android:id="@+id/textView4"
+                        android:id="@+id/balance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
