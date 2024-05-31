@@ -16,7 +16,6 @@ class HistoryAdapter: RecyclerView.Adapter<HistoryAdapter.HisHolder>() {
             tvTitle.text = itemHistory.title
             tvSumm.text = itemHistory.sum.toString()
             tvDate.text = itemHistory.date
-            tvCurr.text = itemHistory.indexPay
         }
 
     }

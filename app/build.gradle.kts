@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.gms)
 }
 
 android {
@@ -43,6 +44,9 @@ android {
 dependencies {
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation(libs.androidx.core.ktx)
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.firestore)
+    implementation(libs.firebase.auth)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
