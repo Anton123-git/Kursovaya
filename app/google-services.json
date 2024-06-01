@@ -2,6 +2,7 @@
   "project_info": {
     "project_number": "38135524313",
     "project_id": "redi-express-97bda",
+    "firebase_url": " https://redi-express-97bda-default-rtdb.europe-west1.firebasedatabase.app/",
     "storage_bucket": "redi-express-97bda.appspot.com"
   },
   "client": [

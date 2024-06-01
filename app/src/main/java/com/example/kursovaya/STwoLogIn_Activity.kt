@@ -5,17 +5,38 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class STwoLogIn_Activity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_stwo_login)
+        auth = Firebase.auth
 
         val logIn = findViewById<Button>(R.id.btn_login)
 
-        logIn.setOnClickListener{
-            startActivity(Intent(this, main::class.java))
+        logIn.setOnClickListener {
+            val emaildata = findViewById<EditText>(R.id.editTextTextEmailAddress2)
+            val passwordData = findViewById<EditText>(R.id.editTextTextPassword)
+
+            val email = emaildata.text.toString()
+            val password = passwordData.text.toString()
+
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this) { task ->
+                    if (task.isSuccessful) {
+                        // Авторизация успешна, переход на главный экран
+                        startActivity(Intent(this, main::class.java))
+                    } else {
+                        // Авторизация не удалась, вывод сообщения об ошибке
+                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
     }

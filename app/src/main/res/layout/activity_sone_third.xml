@@ -82,7 +82,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/text31"
+        android:id="@+id/signInBtn"
         android:layout_width="48dp"
         android:layout_height="20dp"
         android:layout_marginEnd="88dp"

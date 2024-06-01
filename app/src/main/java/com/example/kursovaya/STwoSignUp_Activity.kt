@@ -1,69 +1,59 @@
 package com.example.kursovaya
 
-import android.content.ContentValues.TAG
+
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.auth
-import com.google.firebase.Firebase
-import com.google.firebase.auth.FirebaseUser
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class STwoSignUp_Activity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // Initialize Firebase
-
         setContentView(R.layout.activity_stwo_signup)
+
         auth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance().reference
 
         val signUpBtn = findViewById<Button>(R.id.btn_signup)
-        val name = findViewById<EditText>(R.id.editTextText2)
-        val phone = findViewById<EditText>(R.id.editTextPhone)
-        val emailAdress = findViewById<EditText>(R.id.editTextTextEmailAddress)
-        val password = findViewById<EditText>(R.id.editTextTextPassword2)
+        val nameEditText = findViewById<EditText>(R.id.editTextText2)
+        val phoneEditText = findViewById<EditText>(R.id.editTextPhone)
+        val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress)
+        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword2)
 
         signUpBtn.setOnClickListener {
-            val emailString = emailAdress.text.toString()
-            val password = password.text.toString()
+            val name = nameEditText.text.toString()
+            val phone = phoneEditText.text.toString()
+            val email = emailEditText.text.toString()
+            val password = passwordEditText.text.toString()
 
-                createAccount(emailString, password)
-
+            // Регистрация пользователя с помощью email и пароля в Firebase Authentication
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        // Сохранение данных пользователя в Firebase Realtime Database
+                        val userData = User(name, phone, user?.uid)
+                        database.child("users").child(user?.uid ?: "").setValue(userData)
+                    } else {
+                        // Обработка ошибок при регистрации
+                        Log.e("Registration", "Registration failed", task.exception)
+                    }
+                }
         }
 
-    }
-    private fun createAccount(email: String, password: String) {
-        // [START create_user_with_email]
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "пошла возняяя")
-                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, ".....иди нахуй", task.exception)
-                    Toast.makeText(
-                        baseContext,
-                        "Authentication failed.",
-                        Toast.LENGTH_SHORT,
-                    ).show()
-                    updateUI(null)
-                }
-            }
-    }
 
-    private fun updateUI(user: FirebaseUser?) {
-
+        val signIn = findViewById<TextView>(R.id.signInBtn)
+        signIn.setOnClickListener{
+            startActivity(Intent(this, STwoLogIn_Activity::class.java))
+        }
     }
 }
