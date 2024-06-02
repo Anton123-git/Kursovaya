@@ -17,4 +17,11 @@ class SOneThird_Activity : AppCompatActivity() {
         startActivity(intent)
 
     }
+
+    fun onClickLogIn(view: View){
+        val intent = Intent(this, STwoLogIn_Activity::class.java)
+        startActivity(intent)
+
+    }
+
 }

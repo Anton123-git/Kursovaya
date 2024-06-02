@@ -169,7 +169,7 @@
             android:textSize="12sp" />
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkBoxes"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             android:layout_marginTop="20dp"
@@ -186,7 +186,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:background="@drawable/btn_signup_gray"
-            android:backgroundTint="#0560FA"
+            android:backgroundTint="#A7A7A7"
             android:fontFamily="@font/roboto_bold"
             android:onClick="onClickNextAct"
             android:text="@string/btnsignup"
@@ -216,8 +216,8 @@
                 android:layout_height="20dp"
                 android:contentDescription="@string/text8"
                 android:fontFamily="@font/roboto"
-                android:onClick="onClickNextAct"
-                android:text="@string/text8"
+                android:onClick="onClickLogIn"
+                android:text="Log In"
                 android:textColor="#0560F9" />
         </LinearLayout>
 

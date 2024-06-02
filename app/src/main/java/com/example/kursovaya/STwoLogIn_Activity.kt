@@ -1,12 +1,13 @@
 package com.example.kursovaya
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -39,6 +40,22 @@ class STwoLogIn_Activity : AppCompatActivity() {
                 }
         }
 
+        val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress2)
+        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword)
+        val checkBox = findViewById<CheckBox>(R.id.checkBox)
+
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            val emailFilled = emailEditText.text.isNotBlank()
+            val passwordFilled = passwordEditText.text.isNotBlank()
+
+            if (isChecked && emailFilled && passwordFilled) {
+                logIn.isEnabled = true
+                logIn.backgroundTintList = getColorStateList(R.color.FullLog)
+            } else {
+                logIn.isEnabled = false
+                logIn.backgroundTintList = getColorStateList(R.color.EmptyLog)
+            }
+        }
     }
 
     fun onClickSignUp(view: View){

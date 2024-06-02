@@ -98,7 +98,7 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/radBtn1"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
@@ -150,7 +150,7 @@
             android:layout_marginEnd="24dp"
             android:background="@android:color/white"
             android:elevation="10dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:outlineProvider="bounds"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -161,11 +161,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/radBtn2"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="8dp"
@@ -191,7 +191,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="Pay with wallet"
+                        android:text="Credit / debit card"
                         android:textColor="#3A3A3A"
                         android:textSize="16sp" />
 
@@ -201,11 +201,27 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto"
-                        android:text="complete the payment using your e wallet"
+                        android:text="complete the payment using your debit card"
                         android:textColor="#A7A7A7" />
+
                 </LinearLayout>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/cardLinLay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+                <ListView
+                    android:id="@+id/cardList"
+                    android:layout_width="match_parent"
+                    android:layout_height="208dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
         </LinearLayout>
 
 

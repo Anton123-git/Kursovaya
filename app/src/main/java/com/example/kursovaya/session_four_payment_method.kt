@@ -1,10 +1,12 @@
 package com.example.kursovaya
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ListView
+import android.widget.RadioButton
+import androidx.fragment.app.Fragment
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +36,21 @@ class session_four_payment_method : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
+        val view =  inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
+
+        val radioButton: RadioButton = view.findViewById(R.id.radBtn2)
+        val listView: ListView = view.findViewById(R.id.cardList)
+
+        val items = arrayListOf("**** **** **** 1234", "**** **** **** 4321", "**** **** **** 5678")
+
+        val adapter = CardListAdapter(requireContext(), R.layout.card_items, items)
+        listView.adapter = adapter
+
+        radioButton.setOnCheckedChangeListener { _, isChecked ->
+            listView.visibility = if (isChecked) View.VISIBLE else View.GONE
+        }
+
+        return view
     }
 
     companion object {

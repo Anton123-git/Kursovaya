@@ -7,4 +7,8 @@
     <color name="colorSuccess">#35B369</color>
     <color name="colorEROR">#ED3A3A</color>
     <color name="gray_text">#A7A7A7</color>
+    <color name="green">#35B369</color>
+    <color name="red">#ED3A3A</color>
+    <color name="FullLog">#0560FA</color>
+    <color name="EmptyLog">#A7A7A7</color>
 </resources>

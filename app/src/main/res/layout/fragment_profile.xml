@@ -211,7 +211,7 @@
                     </LinearLayout>
 
                     <ImageView
-                        android:id="@+id/imageView8"
+                        android:id="@+id/imageCard2"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_gravity="center|end"

@@ -42,6 +42,7 @@ class main : AppCompatActivity() {
                 .commit()
         }
 
+
         val track = findViewById<ImageButton>(R.id.track)
         track.setOnClickListener {
             footerChange(3)
