@@ -1,12 +1,15 @@
 package com.example.kursovaya
 
-import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowInsetsController
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -34,23 +37,36 @@ class home : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+
     }
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Установите белый цвет для статус-бара
-        activity?.window?.statusBarColor = resources.getColor(android.R.color.white, requireActivity().theme)
+        val auth = FirebaseAuth.getInstance()
+        val database = FirebaseDatabase.getInstance().reference
 
-        // Установите темные символы для статус-бара
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            activity?.window?.insetsController?.setSystemBarsAppearance(
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
-                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
-            )
-        } else {
-            @Suppress("DEPRECATION")
-            activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
+
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            database.child("users").child(currentUser.uid).get().addOnSuccessListener {
+                if (it.exists()) {
+                    val user = it.getValue(User::class.java)
+                    if (user != null) {
+                        val userName = user.name
+                        // Выводите имя пользователя
+
+                        val userNameTV = view.findViewById<TextView>(R.id.Name)
+                        val firstName = userName.substringAfter(" ").substringBefore(" ")
+                        userNameTV.setText("Hello, $firstName!")
+                    }
+                }
+            }.addOnFailureListener {
+                Log.e("firebase", "Error getting data", it)
+            }
         }
     }
 

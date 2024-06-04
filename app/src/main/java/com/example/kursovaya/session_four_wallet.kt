@@ -10,6 +10,12 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursovaya.databinding.FragmentSessionFourWalletBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlin.math.abs
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -62,7 +68,7 @@ class session_four_wallet : Fragment() {
         val imgCard: ImageView = view.findViewById(R.id.zalupa)
         imgCard.setOnClickListener {
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frame, session_four_payment_method())
+            transaction.replace(R.id.frameeror, session_four_payment_method())
             transaction.addToBackStack(null)
             transaction.commit()
         }
@@ -72,22 +78,35 @@ class session_four_wallet : Fragment() {
         binding.rcView.layoutManager = LinearLayoutManager(context)
         binding.rcView.adapter = adapter
 
-        // Инициализация данных
-        val items = listOf(
-            ItemHistory(1, false, 1000, "Delivery fee", "July 7, 2024"),
-            ItemHistory(2, true, 23000, "Lalalalala", "July 7, 2024"),
-            ItemHistory(3, false, 300, "Third Delivery", "July 7, 2024"),
-            ItemHistory(4, false, 4500, "Another One", "July 7, 2024"),
-            ItemHistory(5, true, 7400, "Experts Are The Best", "July 7, 2024"),
-            ItemHistory(6, false, 2400, "Delivery fee", "July 7, 2024"),
-            ItemHistory(7, false, 52, "Delivery fee", "July 7, 2024"),
-            ItemHistory(8, false, 52, "Delivery fee", "July 7, 2024"),
-            ItemHistory(9, false, 52, "Delivery fee", "July 7, 2024"),
-            ItemHistory(10, false, 52, "Delivery fee", "July 7, 2024"),
-            ItemHistory(11, false, 52, "Delivery fee", "July 7, 2024")
+        // Получаем платежи пользователя
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            val paymentsRef = FirebaseDatabase.getInstance().getReference("payments").child(user.uid)
+            paymentsRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val items = mutableListOf<ItemHistory>()
+                    for (paymentSnapshot in dataSnapshot.children) {
+                        val payment = paymentSnapshot.getValue(Payment::class.java)
+                        if (payment != null) {
+                            items.add(
+                                ItemHistory(
+                                    payment.index_pay,
+                                    payment.amount > 0, // Assuming positive amount is a credit, negative is a debit
+                                    abs(payment.amount),
+                                    payment.title,
+                                    payment.date
+                                )
+                            )
+                        }
+                    }
+                    adapter.updateData(items)
+                }
 
-        )
-        adapter.updateData(items)
+                override fun onCancelled(error: DatabaseError) {
+                    // Обработка ошибки
+                }
+            })
+        }
     }
 
     companion object {

@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kursovaya.databinding.HisItemBinding
 
 
-class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HisHolder>() {
+class  HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HisHolder>() {
 
     private val hisList = ArrayList<ItemHistory>()
 

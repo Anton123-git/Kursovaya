@@ -2,6 +2,9 @@ package com.example.kursovaya
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.provider.Settings.Global
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
@@ -34,8 +37,16 @@ class STwoLogIn_Activity : AppCompatActivity() {
                         // Авторизация успешна, переход на главный экран
                         startActivity(Intent(this, main::class.java))
                     } else {
-                        // Авторизация не удалась, вывод сообщения об ошибке
-                        Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+                        val transaction = supportFragmentManager.beginTransaction()
+                        transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right)
+                        transaction.replace(R.id.frameeror, Error_frag())
+                        transaction.commit()
+
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            supportFragmentManager.beginTransaction()
+                                .remove(Error_frag())
+                                .commit()
+                        }, 15000) // 15 секунд
                     }
                 }
         }

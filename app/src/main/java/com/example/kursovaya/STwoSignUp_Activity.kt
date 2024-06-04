@@ -45,42 +45,54 @@ class STwoSignUp_Activity : AppCompatActivity() {
                         // Сохранение данных пользователя в Firebase Realtime Database
                         val userData = User(name, phone, user?.uid)
                         database.child("users").child(user?.uid ?: "").setValue(userData)
+
+                        // Создаем новый узел для платежей
+                        val paymentsRef = database.child("payments").child(user?.uid ?: "")
+                        // Создаем новый платеж
+                        val payment = Payment(
+                            index_pay = 1,
+                            amount = 100.0,
+                            title = "Payment 1",
+                            date = "2024-06-04",
+                            uid = user?.uid ?: ""
+                        )
+                        paymentsRef.push().setValue(payment)
                     } else {
                         // Обработка ошибок при регистрации
                         Log.e("Registration", "Registration failed", task.exception)
                     }
                 }
-        }
 
 
-        val checkBox = findViewById<CheckBox>(R.id.checkBoxes)
-        // НИКИТА ПРОВЕРЬ ЭТОТ КОД, НЕ РАБОТАЕТ ОКРАШИВАНИЕ КНОПКИ ПОСЛЕ ВВОДА И ЧЕКА ЧЕКБОКСА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        checkBox.setOnCheckedChangeListener { _, isChecked ->
-            val emailFilled = emailEditText.text.isNotBlank()
-            val passwordFilled = passwordEditText.text.isNotBlank()
-            val nameFilled = nameEditText.text.isNotBlank()
-            val phoneFilled = phoneEditText.text.isNotBlank()
+            val checkBox = findViewById<CheckBox>(R.id.checkBoxes)
+            // НИКИТА ПРОВЕРЬ ЭТОТ КОД, НЕ РАБОТАЕТ ОКРАШИВАНИЕ КНОПКИ ПОСЛЕ ВВОДА И ЧЕКА ЧЕКБОКСА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            checkBox.setOnCheckedChangeListener { _, isChecked ->
+                val emailFilled = emailEditText.text.isNotBlank()
+                val passwordFilled = passwordEditText.text.isNotBlank()
+                val nameFilled = nameEditText.text.isNotBlank()
+                val phoneFilled = phoneEditText.text.isNotBlank()
 
-            if (isChecked && emailFilled && passwordFilled && nameFilled && phoneFilled) {
-                signUpBtn2.isEnabled = true
-                signUpBtn2.backgroundTintList = getColorStateList(R.color.FullLog)
-            } else {
-                signUpBtn2.isEnabled = false
-                signUpBtn2.backgroundTintList = getColorStateList(R.color.EmptyLog)
+                if (isChecked && emailFilled && passwordFilled && nameFilled && phoneFilled) {
+                    signUpBtn2.isEnabled = true
+                    signUpBtn2.backgroundTintList = getColorStateList(R.color.FullLog)
+                } else {
+                    signUpBtn2.isEnabled = false
+                    signUpBtn2.backgroundTintList = getColorStateList(R.color.EmptyLog)
+                }
             }
+
+
+            val signIn = findViewById<TextView>(R.id.signInBtn)
+            signIn.setOnClickListener {
+                startActivity(Intent(this, STwoLogIn_Activity::class.java))
+            }
+
+
         }
+        fun onClickLogIn(view: View) {
+            val intent = Intent(this, STwoLogIn_Activity::class.java)
+            startActivity(intent)
 
-
-        val signIn = findViewById<TextView>(R.id.signInBtn)
-        signIn.setOnClickListener{
-            startActivity(Intent(this, STwoLogIn_Activity::class.java))
         }
-
-
-    }
-    fun onClickLogIn(view: View){
-        val intent = Intent(this, STwoLogIn_Activity::class.java)
-        startActivity(intent)
-
     }
 }
