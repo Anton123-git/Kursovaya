@@ -6,4 +6,6 @@ data class Payment(
     val title: String,
     val date: String,
     val uid: String
-)
+) {
+    constructor() : this(0, 0.0, "", "", "") // Add a no-argument constructor
+}

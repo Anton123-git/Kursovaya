@@ -58,7 +58,6 @@ class STwoLogIn_Activity : AppCompatActivity() {
         checkBox.setOnCheckedChangeListener { _, isChecked ->
             val emailFilled = emailEditText.text.isNotBlank()
             val passwordFilled = passwordEditText.text.isNotBlank()
-
             if (isChecked && emailFilled && passwordFilled) {
                 logIn.isEnabled = true
                 logIn.backgroundTintList = getColorStateList(R.color.FullLog)
