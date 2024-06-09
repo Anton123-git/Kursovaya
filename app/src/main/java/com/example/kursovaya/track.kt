@@ -2,23 +2,22 @@ package com.example.kursovaya
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import androidx.core.view.doOnLayout
+import androidx.fragment.app.Fragment
 import java.util.*
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class track : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
     private lateinit var redDot: View
+    private lateinit var blueDot1: View
+    private lateinit var blueDot2: View
     private lateinit var imageView: ImageView
     private val handler = Handler()
     private val random = Random()
@@ -43,13 +42,30 @@ class track : Fragment() {
         val checkbox4 = view.findViewById<CheckBox>(R.id.checkbox4)
 
         redDot = view.findViewById(R.id.redDot)
+        blueDot1 = view.findViewById(R.id.blueDot1)
+        blueDot2 = view.findViewById(R.id.blueDot2)
         imageView = view.findViewById(R.id.imageView)
 
         // Ждем пока макет будет отрисован
         imageView.doOnLayout {
             imageViewWidth = it.width
             imageViewHeight = it.height
-            moveRedDot()
+
+            // Располагаем синие точки в случайных местах
+            val blueDot1X = random.nextInt(imageViewWidth - blueDot1.width)
+            val blueDot1Y = random.nextInt(imageViewHeight - blueDot1.height)
+            blueDot1.translationX = blueDot1X.toFloat()
+            blueDot1.translationY = blueDot1Y.toFloat()
+            blueDot1.visibility = View.VISIBLE
+
+            val blueDot2X = random.nextInt(imageViewWidth - blueDot2.width)
+            val blueDot2Y = random.nextInt(imageViewHeight - blueDot2.height)
+            blueDot2.translationX = blueDot2X.toFloat()
+            blueDot2.translationY = blueDot2Y.toFloat()
+            blueDot2.visibility = View.VISIBLE
+
+            // Начинаем движение красной точки
+            moveRedDot(blueDot1X.toFloat(), blueDot1Y.toFloat(), blueDot2X.toFloat(), blueDot2Y.toFloat())
         }
 
         // Создаем задачи для включения чекбоксов
@@ -72,18 +88,26 @@ class track : Fragment() {
         return view
     }
 
-    private fun moveRedDot() {
-        handler.postDelayed({
-            val x = random.nextInt(imageViewWidth - redDot.width)
-            val y = random.nextInt(imageViewHeight - redDot.height)
-            redDot.translationX = x.toFloat()
-            redDot.translationY = y.toFloat()
-            redDot.visibility = View.VISIBLE
-            moveRedDot()
-        }, 1000)
+    private fun moveRedDot(startX: Float, startY: Float, endX: Float, endY: Float) {
+        val steps = 4
+        val delay = 15000L
+
+        val dx = (endX - startX) / steps
+        val dy = (endY - startY) / steps
+
+        for (i in 0..steps) {
+            handler.postDelayed({
+                redDot.translationX = startX + dx * i
+                redDot.translationY = startY + dy * i
+                redDot.visibility = View.VISIBLE
+            }, delay * i)
+        }
     }
 
     companion object {
+        private const val ARG_PARAM1 = "param1"
+        private const val ARG_PARAM2 = "param2"
+
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             track().apply {
