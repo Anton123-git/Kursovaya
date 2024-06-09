@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kursovaya.databinding.FragmentCourierOrdersBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Courier_orders : Fragment() {
+
+    private lateinit var binding: FragmentCourierOrdersBinding
+    private val adapter = CourierAllOrdersAdapter()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +40,24 @@ class Courier_orders : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_courier_orders, container, false)
+        binding = FragmentCourierOrdersBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    private fun initRecyclerView() {
+        binding.rcViewAllOrders.layoutManager = LinearLayoutManager(context)
+        binding.rcViewAllOrders.adapter = adapter
+
+        // Инициализация данных
+        val items = listOf(
+            CourierAllOerdersItem(1, 1, 1, "Резиновая баба", "С автоотсосом, и настоящей вагиной", "July 7, 2022"),
+            CourierAllOerdersItem(1, 1, 2, "Варенье", "С малиной", "July 7, 2022"),
+            CourierAllOerdersItem(1, 1, 3, "Фонарик", "Чисто вместо лампочки", "July 7, 2022"),
+            CourierAllOerdersItem(1, 1, 4, "Зипка Setner", "Залупа но пойдет", "July 7, 2022"),
+            CourierAllOerdersItem(1, 1, 5, "Комплект ФСО и СГУ", "Сута жи ес", "July 7, 2022"),
+
+        )
+        adapter.updateDataCAOrd(items)
     }
 
     companion object {
@@ -44,7 +67,7 @@ class Courier_orders : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment Courier_orders.
+         * @return A new instance of fragment courier_order.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
