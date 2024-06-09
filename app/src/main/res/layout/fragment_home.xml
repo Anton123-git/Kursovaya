@@ -216,13 +216,13 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="8dp"
                                 android:layout_marginRight="24dp"
+                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/imageCard2"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="8dp"
                                     android:foregroundGravity="left"
                                     android:src="@drawable/healthicons_call_centre" />
 
@@ -261,13 +261,13 @@
                                 android:layout_marginLeft="8dp"
                                 android:layout_marginRight="24dp"
                                 android:layout_marginBottom="10dp"
+                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/imageView9"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
                                     android:foregroundGravity="left"
                                     android:src="@drawable/vector" />
 
@@ -276,7 +276,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="Customer Care"
+                                    android:text="Fund your wallet"
                                     android:textColor="#0560FA"
                                     android:textSize="16sp" />
 
@@ -286,7 +286,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Our customer care service line is available from 8 -9pm week days and 9 - 5 weekends - tap to call us today"
+                                    android:text="To fund your wallet is as easy as ABC, make use of our fast technology and top-up your wallet today"
                                     android:textSize="11sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -310,13 +310,13 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="8dp"
                                 android:layout_marginRight="24dp"
+                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/imageView11"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
                                     android:foregroundGravity="left"
                                     android:src="@drawable/codicon_package" />
 
@@ -325,7 +325,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="Customer Care"
+                                    android:text="Send a package"
                                     android:textColor="#0560FA"
                                     android:textSize="16sp" />
 
@@ -335,7 +335,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Our customer care service line is available from 8 -9pm week days and 9 - 5 weekends - tap to call us today"
+                                    android:text="Request for a driver to pick up or deliver your package for you"
                                     android:textSize="11sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -353,14 +353,13 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="8dp"
                                 android:layout_marginRight="24dp"
+                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
                                 <ImageView
                                     android:id="@+id/imageView3"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginTop="12dp"
-                                    android:foregroundGravity="left"
                                     android:src="@drawable/vector_1" />
 
                                 <TextView
@@ -368,7 +367,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="Customer Care"
+                                    android:text="Chats"
                                     android:textColor="#0560FA"
                                     android:textSize="16sp" />
 
@@ -378,7 +377,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Our customer care service line is available from 8 -9pm week days and 9 - 5 weekends - tap to call us today"
+                                    android:text="Search for available rider within your area"
                                     android:textSize="11sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
