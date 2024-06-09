@@ -17,7 +17,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginBottom="70dp"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/btn_stl"
             android:backgroundTint="#0560FA"
             android:text="add a card"
