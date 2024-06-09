@@ -1,10 +1,18 @@
 package com.example.kursovaya
 
+import android.content.Context
 import android.os.Bundle
+import android.text.Editable
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.text.InputFilter
+import android.text.InputType
+import android.text.TextWatcher
+import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +42,67 @@ class addAcard : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_acard, container, false)
+        val view = inflater.inflate(R.layout.fragment_add_acard, container, false)
+
+        val cardNumber = view.findViewById<EditText>(R.id.editTextText3)
+        val cardDate = view.findViewById<EditText>(R.id.editTextText13)
+        val cardCVC = view.findViewById<EditText>(R.id.editTextText12)
+
+        cardNumber.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s?.length == 16) {
+                    cardNumber.clearFocus()
+                    cardDate.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+
+        cardDate.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s?.length == 2 && before < count) {
+                    cardDate.setText("$s/")
+                    cardDate.setSelection(cardDate.text.length)
+                }
+                if (s?.length == 5) {
+                    cardDate.clearFocus()
+                    cardCVC.requestFocus()
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
+
+        cardCVC.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s?.length == 3) {
+                    view?.clearFocus()
+                    // Скрытие клавиатуры
+                    val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    imm.hideSoftInputFromWindow(view?.windowToken, 0)
+                }
+            }
+        })
+
+        cardNumber.inputType = InputType.TYPE_CLASS_NUMBER
+        cardDate.inputType = InputType.TYPE_CLASS_NUMBER
+        cardCVC.inputType = InputType.TYPE_CLASS_NUMBER
+        return view
     }
 
     companion object {
