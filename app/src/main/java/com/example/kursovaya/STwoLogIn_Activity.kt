@@ -51,9 +51,9 @@ class STwoLogIn_Activity : AppCompatActivity() {
                                     if (user != null) {
                                         val userState = user.status
                                         if(userState == 1){
-                                            admAct()
+                                            userAct()
                                         } else if(userState == 2){
-                                            Log.e("firebase", "тупое")
+                                            admAct()
                                         } else {
                                             // Handle the case where the user's status is neither 1 nor 2
                                         }
@@ -97,8 +97,13 @@ class STwoLogIn_Activity : AppCompatActivity() {
         }
     }
 
+    fun userAct(){
+        val intent = Intent(this, main::class.java)
+        startActivity(intent)
+    }
+
     fun admAct(){
-        val intent = Intent(this, home::class.java)
+        val intent = Intent(this, main::class.java)
         startActivity(intent)
     }
 
@@ -110,4 +115,4 @@ class STwoLogIn_Activity : AppCompatActivity() {
         val intent = Intent(this, STwoForgotPass_Activity::class.java)
         startActivity(intent)
     }
-}}
+}
