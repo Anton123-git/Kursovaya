@@ -31,6 +31,20 @@
         android:src="@drawable/your_image" />
 
     <View
+        android:id="@+id/blueDot1"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/blue_dot"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/blueDot2"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/blue_dot"
+        android:visibility="invisible" />
+
+    <View
         android:id="@+id/redDot"
         android:layout_width="10dp"
         android:layout_height="10dp"
@@ -106,8 +120,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="true" />
+                android:buttonTint="@color/colorPrimary" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -186,7 +199,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Package in transit"
-
                 android:textSize="16sp" />
 
         </LinearLayout>
