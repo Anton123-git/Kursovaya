@@ -17,7 +17,7 @@ class  HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HisHolder>() {
         val binding = HisItemBinding.bind(item)
 
         fun bind(itemHistory: ItemHistory) = with(binding) {
-            tvUserRole.text = itemHistory.title
+            tvTitle.text = itemHistory.title
             val decimalFormat = DecimalFormat("#,###.00")
             val formattedSum = decimalFormat.format(itemHistory.sum.toDouble())
             tvSumm.text = "N$formattedSum"
