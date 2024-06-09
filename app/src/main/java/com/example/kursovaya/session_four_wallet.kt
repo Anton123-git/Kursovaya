@@ -68,7 +68,7 @@ class session_four_wallet : Fragment() {
         val imgCard: ImageView = view.findViewById(R.id.zalupa)
         imgCard.setOnClickListener {
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.frameeror, session_four_payment_method())
+            transaction.replace(R.id.frame, session_four_payment_method())
             transaction.addToBackStack(null)
             transaction.commit()
         }
