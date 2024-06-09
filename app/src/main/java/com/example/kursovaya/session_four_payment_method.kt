@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ListView
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
@@ -50,7 +51,30 @@ class session_four_payment_method : Fragment() {
             listView.visibility = if (isChecked) View.VISIBLE else View.GONE
         }
 
+        val addCard = view.findViewById<Button>(R.id.addCArd)
+        addCard.setOnClickListener{
+            // Создаем фрагмент, который будет отображаться
+            val newFragment = addAcard()
+
+            // Получаем менеджер фрагментов вложенного фрагмента
+            val fragmentManager = childFragmentManager
+
+            // Начинаем транзакцию
+            val transaction = fragmentManager.beginTransaction()
+
+            // Заменяем содержимое вложенного фрагмента на новый
+            transaction.replace(R.id.addACardFrame, newFragment)
+
+            // Коммитим транзакцию
+            transaction.commit()
+        }
+
+
         return view
+
+
+
+
     }
 
     companion object {
