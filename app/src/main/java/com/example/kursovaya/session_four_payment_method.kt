@@ -6,9 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -38,15 +41,34 @@ class session_four_payment_method : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
+        val view = inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
 
         val radioButton: RadioButton = view.findViewById(R.id.radBtn2)
         val listView: ListView = view.findViewById(R.id.cardList)
 
-        val items = arrayListOf("**** **** **** 1234", "**** **** **** 4321", "**** **** **** 5678")
+        val items = arrayListOf<String>()
 
         val adapter = CardListAdapter(requireContext(), R.layout.card_items, items)
         listView.adapter = adapter
+
+        // Get the current user's ID
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentUser?.uid ?: ""
+
+        // Retrieve the cards from the Firebase Realtime Database
+        val db = FirebaseDatabase.getInstance().getReference("cards/$userId")
+        db.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val result = task.result
+                result.children.forEach { card ->
+                    val cardNumber = card.child("number").value as String
+                    items.add("$cardNumber")
+                }
+                adapter.notifyDataSetChanged()
+            } else {
+                // Handle the error
+            }
+        }
 
         radioButton.setOnCheckedChangeListener { _, isChecked ->
             listView.visibility = if (isChecked) View.VISIBLE else View.GONE
@@ -67,6 +89,14 @@ class session_four_payment_method : Fragment() {
             transaction.commit()
             // Скрываем список карт
             radioButton.isChecked = false
+        }
+
+
+
+        val back = view.findViewById<ImageView>(R.id.imageView)
+
+        back.setOnClickListener {
+            fragmentManager?.popBackStack()
         }
 
         return view
