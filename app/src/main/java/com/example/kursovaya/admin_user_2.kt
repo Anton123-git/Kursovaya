@@ -1,10 +1,12 @@
 package com.example.kursovaya
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kursovaya.databinding.FragmentAdminInfoForOneUserBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class admin_user_2 : Fragment() {
+
+    private lateinit var binding: FragmentAdminInfoForOneUserBinding
+    private val adapter = OrdersAdapter()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +40,23 @@ class admin_user_2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_user_2, container, false)
+        binding = FragmentAdminInfoForOneUserBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    private fun initRecyclerView() {
+        binding.rcViewOrders.layoutManager = LinearLayoutManager(context)
+        binding.rcViewOrders.adapter = adapter
+
+        // Инициализация данных
+        val items = listOf(
+            OrderItem(1, 1, 1, "Резиновая баба", "С автоотсосом, и настоящей вагиной", "July 7, 2022"),
+            OrderItem(1, 2, 2, "Варенье", "С малиной", "July 7, 2022"),
+            OrderItem(1, 3, 3, "Фонарик", "Чисто вместо лампочки", "July 7, 2022"),
+            OrderItem(1, 1, 4, "Зипка Setner", "Залупа но пойдет", "July 7, 2022"),
+            OrderItem(1, 2, 5, "Комплект ФСО и СГУ", "Сута жи ес", "July 7, 2022"),
+        )
+        adapter.updateDataOrd(items)
     }
 
     companion object {
