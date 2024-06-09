@@ -1,6 +1,7 @@
 package com.example.kursovaya
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,33 +50,30 @@ class session_four_payment_method : Fragment() {
 
         radioButton.setOnCheckedChangeListener { _, isChecked ->
             listView.visibility = if (isChecked) View.VISIBLE else View.GONE
+            if (isChecked) {
+                val addCardFragment = childFragmentManager.findFragmentById(R.id.addACardFrame)
+                if (addCardFragment != null) {
+                    childFragmentManager.beginTransaction().hide(addCardFragment).commit()
+                }
+            }
         }
 
         val addCard = view.findViewById<Button>(R.id.addCArd)
-        addCard.setOnClickListener{
-            // Создаем фрагмент, который будет отображаться
+        addCard.setOnClickListener {
             val newFragment = addAcard()
-
-            // Получаем менеджер фрагментов вложенного фрагмента
             val fragmentManager = childFragmentManager
-
-            // Начинаем транзакцию
             val transaction = fragmentManager.beginTransaction()
-
-            // Заменяем содержимое вложенного фрагмента на новый
             transaction.replace(R.id.addACardFrame, newFragment)
-
-            // Коммитим транзакцию
             transaction.commit()
+            // Скрываем список карт
+            radioButton.isChecked = false
         }
 
-
         return view
-
-
-
-
     }
+
+
+
 
     companion object {
         /**

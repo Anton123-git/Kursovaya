@@ -12,7 +12,10 @@ import android.text.InputFilter
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -102,6 +105,35 @@ class addAcard : Fragment() {
         cardNumber.inputType = InputType.TYPE_CLASS_NUMBER
         cardDate.inputType = InputType.TYPE_CLASS_NUMBER
         cardCVC.inputType = InputType.TYPE_CLASS_NUMBER
+
+        val add = view.findViewById<Button>(R.id.add)
+        add.setOnClickListener {
+            // Получаем текст из полей
+            val cardNumberText = cardNumber.text.toString()
+            val cardDateText = cardDate.text.toString()
+            val cardCVCText = cardCVC.text.toString()
+
+            // Очищаем поля
+            cardNumber.text.clear()
+            cardDate.text.clear()
+            cardCVC.text.clear()
+
+            // Получаем текущего пользователя
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            val userId = currentUser?.uid ?: ""
+
+            // Запись данных в Firebase Realtime Database
+            val db = FirebaseDatabase.getInstance().getReference("cards/$userId")
+            val cardId = db.push().key ?: ""
+            val card = cards(
+                id = cardId,
+                number = cardNumberText ?: "",
+                date = cardDateText ?: "",
+                cvc = cardCVCText ?: ""
+            )
+            db.child(cardId).setValue(card)
+        }
+
         return view
     }
 

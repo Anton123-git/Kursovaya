@@ -45,7 +45,6 @@ class STwoSignUp_Activity : AppCompatActivity() {
                         // Сохранение данных пользователя в Firebase Realtime Database
                         val userData = User(name, phone, user?.uid, status = 1)
                         database.child("users").child(user?.uid ?: "").setValue(userData)
-
                         // Создаем новый узел для платежей
                         val paymentsRef = database.child("payments").child(user?.uid ?: "")
                         // Создаем новый платеж
