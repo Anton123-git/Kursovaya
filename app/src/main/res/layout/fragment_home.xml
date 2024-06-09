@@ -300,6 +300,7 @@
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
+                            android:id="@+id/www"
                             android:layout_width="match_parent"
                             android:layout_height="159dp"
                             android:backgroundTint="#F2F2F2"
@@ -325,7 +326,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/roboto_medium"
-                                    android:text="Customer Care"
+                                    android:text="Send a package"
                                     android:textColor="#0560FA"
                                     android:textSize="16sp" />
 
@@ -335,7 +336,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
                                     android:fontFamily="@font/roboto"
-                                    android:text="Our customer care service line is available from 8 -9pm week days and 9 - 5 weekends - tap to call us today"
+                                    android:text="Request for a driver to pick up or deliver your package for you"
                                     android:textSize="11sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>

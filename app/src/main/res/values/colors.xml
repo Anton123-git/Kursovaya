@@ -11,4 +11,5 @@
     <color name="red">#ED3A3A</color>
     <color name="FullLog">#0560FA</color>
     <color name="EmptyLog">#A7A7A7</color>
+    <color name="EmptyLog2">#EC8000</color>
 </resources>

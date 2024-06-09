@@ -35,7 +35,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:text="Transaction Successful"
                 android:textAlignment="center"
-                android:textColor="#FFFFFF"
+                android:textColor="@color/black"
                 android:textSize="24sp" />
 
             <TextView

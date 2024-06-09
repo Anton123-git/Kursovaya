@@ -1,11 +1,13 @@
 package com.example.kursovaya
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -49,7 +51,6 @@ class home : Fragment() {
         val database = FirebaseDatabase.getInstance().reference
 
 
-
         val currentUser = auth.currentUser
         if (currentUser != null) {
             database.child("users").child(currentUser.uid).get().addOnSuccessListener {
@@ -88,4 +89,7 @@ class home : Fragment() {
                 }
             }
     }
+
+
 }
+
