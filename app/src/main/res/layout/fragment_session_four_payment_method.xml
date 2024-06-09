@@ -12,7 +12,7 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_signup"
+            android:id="@+id/addCArd"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="25dp"
@@ -20,8 +20,7 @@
             android:layout_marginBottom="70dp"
             android:background="@drawable/btn_stl"
             android:backgroundTint="#0560FA"
-            android:onClick="onClickNextAct"
-            android:text="Proceed to pay"
+            android:text="add a card"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
@@ -223,6 +222,21 @@
             </LinearLayout>
 
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/addACardFrame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/addCArd"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Pay2">
+
+        </FrameLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
