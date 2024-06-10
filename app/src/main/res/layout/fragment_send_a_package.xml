@@ -8,7 +8,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
 
         <LinearLayout
             android:id="@+id/linearLayout5"
@@ -47,10 +48,11 @@
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="1dp"
-            android:background="#FFF5F5"
+            android:background="#FFFFFF"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
@@ -70,8 +72,8 @@
 
                     <ImageView
                         android:id="@+id/imageView2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:src="@drawable/vector" />
 
@@ -87,7 +89,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editTextText1"
+                    android:id="@+id/a_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -102,7 +104,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText2"
+                    android:id="@+id/a_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -117,7 +119,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText3"
+                    android:id="@+id/a_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -132,7 +134,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText4"
+                    android:id="@+id/a_others"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -162,8 +164,8 @@
 
                     <ImageView
                         android:id="@+id/imageView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
                         android:src="@drawable/vector_1" />
 
@@ -179,7 +181,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editTextText5"
+                    android:id="@+id/b_address"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -194,7 +196,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText6"
+                    android:id="@+id/b_state"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -209,7 +211,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText7"
+                    android:id="@+id/b_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -224,7 +226,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText8"
+                    android:id="@+id/b_others"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -289,7 +291,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editTextText9"
+                    android:id="@+id/package_items"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -304,7 +306,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText10"
+                    android:id="@+id/weight"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -319,7 +321,7 @@
                     tools:ignore="Autofill" />
 
                 <EditText
-                    android:id="@+id/editTextText11"
+                    android:id="@+id/worth"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#CFCFCF"
@@ -335,15 +337,10 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+            <Space
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="39px"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Select delivery type"
-                android:textSize="14sp" />
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -352,6 +349,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btn"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_marginLeft="25dp"

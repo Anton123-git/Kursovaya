@@ -50,7 +50,7 @@ class main : AppCompatActivity() {
         track.setOnClickListener {
             footerChange(3)
             supportFragmentManager.beginTransaction()
-                .replace(R.id.frame, session_four_wallet())
+                .replace(R.id.frame, send_a_package())
                 .commit()
         }
 

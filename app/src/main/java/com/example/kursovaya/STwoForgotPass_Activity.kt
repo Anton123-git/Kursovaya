@@ -34,7 +34,7 @@ class STwoForgotPass_Activity : AppCompatActivity() {
         }
 
         fun onClickSignUp(view: View) {
-            val intent = Intent(this, STwoSignUp_Activity::class.java)
+            val intent = Intent(this, sign_up::class.java)
             startActivity(intent)
         }
     }

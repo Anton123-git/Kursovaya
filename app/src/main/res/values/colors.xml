@@ -12,4 +12,8 @@
     <color name="FullLog">#0560FA</color>
     <color name="EmptyLog">#A7A7A7</color>
     <color name="EmptyLog2">#EC8000</color>
+    <color name="color_user">#0560FA</color>
+    <color name="color_courier">#E18E12</color>
+    <color name="color_admin">#FF6060</color>
+    <color name="gold">#F2BD6E</color>
 </resources>

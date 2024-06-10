@@ -1,10 +1,12 @@
 package com.example.kursovaya
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kursovaya.databinding.FragmentAdminUsersBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +19,10 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class admin_users : Fragment() {
+
+    private lateinit var binding: FragmentAdminUsersBinding
+    private val adapter = UsersAdapter()
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,8 +40,28 @@ class admin_users : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_admin_users, container, false)
+        binding = FragmentAdminUsersBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+    private fun initRecyclerView() {
+        binding.rcViewUsersD.layoutManager = LinearLayoutManager(context)
+        binding.rcViewUsersD.adapter = adapter
+
+        // Инициализация данных
+        val items = listOf(
+            UserItem("Anton Gandon", "zaebis", 1, 1),
+            UserItem("Vlad Ebanat", "zaebis", 2, 3),
+            UserItem("Ovcut Rahal", "zaebis", 3, 2),
+            UserItem("Mamut Rahal", "zaebis", 4, 1),
+            UserItem("Jechka Dirova", "zaebis", 5, 2),
+            UserItem("Vitalya CallOfDuty", "zaebis", 6, 1),
+            UserItem("Duty Free", "zaebis", 7, 2),
+            UserItem("Super Man", "zaebis", 8, 2),
+            )
+        adapter.updateDataUser(items)
+    }
+
 
     companion object {
         /**

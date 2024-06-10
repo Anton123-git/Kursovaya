@@ -1,13 +1,17 @@
 package com.example.kursovaya
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.ListView
 import android.widget.RadioButton
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +28,10 @@ class session_four_payment_method : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var listView: ListView
+    private lateinit var adapter: CardListAdapter
+    private val items = arrayListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -37,44 +45,70 @@ class session_four_payment_method : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view =  inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
+        val view = inflater.inflate(R.layout.fragment_session_four_payment_method, container, false)
 
-        val radioButton: RadioButton = view.findViewById(R.id.radBtn2)
-        val listView: ListView = view.findViewById(R.id.cardList)
-
-        val items = arrayListOf("**** **** **** 1234", "**** **** **** 4321", "**** **** **** 5678")
-
-        val adapter = CardListAdapter(requireContext(), R.layout.card_items, items)
+        listView = view.findViewById(R.id.cardList)
+        adapter = CardListAdapter(requireContext(), R.layout.card_items, items)
         listView.adapter = adapter
 
+        val radioButton: RadioButton = view.findViewById(R.id.radBtn2)
         radioButton.setOnCheckedChangeListener { _, isChecked ->
-            listView.visibility = if (isChecked) View.VISIBLE else View.GONE
+            if (isChecked) {
+                loadCardsFromFirebase()
+                listView.visibility = View.VISIBLE
+                val addCardFragment = childFragmentManager.findFragmentById(R.id.addACardFrame)
+                if (addCardFragment != null) {
+                    childFragmentManager.beginTransaction().hide(addCardFragment).commit()
+                }
+            } else {
+                listView.visibility = View.GONE
+            }
         }
 
         val addCard = view.findViewById<Button>(R.id.addCArd)
-        addCard.setOnClickListener{
-            // Создаем фрагмент, который будет отображаться
-            val newFragment = addAcard()
-
-            // Получаем менеджер фрагментов вложенного фрагмента
-            val fragmentManager = childFragmentManager
-
-            // Начинаем транзакцию
-            val transaction = fragmentManager.beginTransaction()
-
-            // Заменяем содержимое вложенного фрагмента на новый
-            transaction.replace(R.id.addACardFrame, newFragment)
-
-            // Коммитим транзакцию
-            transaction.commit()
+        addCard.setOnClickListener {
+            val addCardFragment = childFragmentManager.findFragmentById(R.id.addACardFrame)
+            if (addCardFragment != null) {
+                childFragmentManager.beginTransaction().show(addCardFragment).commit()
+            } else {
+                val newFragment = addAcard()
+                val fragmentManager = childFragmentManager
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.addACardFrame, newFragment)
+                transaction.commit()
+            }
+            radioButton.isChecked = false
         }
 
+        val back = view.findViewById<ImageView>(R.id.imageView)
+
+        back.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
         return view
+    }
 
+    private fun loadCardsFromFirebase() {
+        items.clear()
+        adapter.notifyDataSetChanged()
 
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentUser?.uid ?: ""
 
-
+        val db = FirebaseDatabase.getInstance().getReference("cards/$userId")
+        db.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val result = task.result
+                result.children.forEach { card ->
+                    val cardNumber = card.child("number").value as String
+                    items.add("$cardNumber")
+                }
+                adapter.notifyDataSetChanged()
+            } else {
+                // Handle the error
+            }
+        }
     }
 
     companion object {

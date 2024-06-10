@@ -14,13 +14,13 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
-class STwoSignUp_Activity : AppCompatActivity() {
+class sign_up : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_stwo_signup)
+        setContentView(R.layout.sign_up)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance().reference
@@ -45,7 +45,6 @@ class STwoSignUp_Activity : AppCompatActivity() {
                         // Сохранение данных пользователя в Firebase Realtime Database
                         val userData = User(name, phone, user?.uid, status = 1)
                         database.child("users").child(user?.uid ?: "").setValue(userData)
-
                         // Создаем новый узел для платежей
                         val paymentsRef = database.child("payments").child(user?.uid ?: "")
                         // Создаем новый платеж

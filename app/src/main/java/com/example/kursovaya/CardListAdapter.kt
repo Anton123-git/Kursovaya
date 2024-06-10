@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class CardListAdapter(context: Context, private val resource: Int, private val items: ArrayList<String>) :
     ArrayAdapter<String>(context, resource, items) {
@@ -23,9 +28,29 @@ class CardListAdapter(context: Context, private val resource: Int, private val i
 
         val btnDel: ImageView = itemView.findViewById(R.id.btnDel)
 
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentUser?.uid ?: ""
+        val db = FirebaseDatabase.getInstance().getReference("cards/$userId")
+
         btnDel.setOnClickListener {
-            items.removeAt(position)
-            notifyDataSetChanged()
+            val cardNumber = items[position]
+            db.addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    for (card in dataSnapshot.children) {
+                        if (card.child("number").value == cardNumber) {
+                            val cardId = card.key
+                            db.child(cardId!!).removeValue()
+                            items.removeAt(position)
+                            notifyDataSetChanged()
+                            break
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Handle the error
+                }
+            })
         }
 
         return itemView
