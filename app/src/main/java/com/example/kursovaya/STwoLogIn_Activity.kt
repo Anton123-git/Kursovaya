@@ -2,6 +2,7 @@ package com.example.kursovaya
 
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -18,8 +19,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
-val auth = FirebaseAuth.getInstance()
-val database = FirebaseDatabase.getInstance().getReference("users")
 
 class STwoLogIn_Activity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -29,6 +28,25 @@ class STwoLogIn_Activity : AppCompatActivity() {
         auth = Firebase.auth
 
         val logIn = findViewById<Button>(R.id.btn_login)
+
+        logIn.isEnabled = false
+        logIn.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.EmptyLog))
+
+        val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress2)
+        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword)
+        val checkBox = findViewById<CheckBox>(R.id.checkBox)
+
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            val emailFilled = emailEditText.text.isNotBlank()
+            val passwordFilled = passwordEditText.text.isNotBlank()
+            if (isChecked && emailFilled && passwordFilled) {
+                logIn.isEnabled = true
+                logIn.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.FullLog))
+            } else {
+                logIn.isEnabled = false
+                logIn.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.EmptyLog))
+            }
+        }
 
         logIn.setOnClickListener {
             val emaildata = findViewById<EditText>(R.id.editTextTextEmailAddress2)
@@ -42,6 +60,7 @@ class STwoLogIn_Activity : AppCompatActivity() {
                     if (task.isSuccessful) {
                         val currentUser = auth.currentUser
                         if (currentUser != null) {
+                            val database = FirebaseDatabase.getInstance().getReference("users")
                             database.child(currentUser.uid).addListenerForSingleValueEvent(object :
                                 ValueEventListener {
                                 override fun onDataChange(dataSnapshot: DataSnapshot) {
@@ -76,22 +95,6 @@ class STwoLogIn_Activity : AppCompatActivity() {
                         }, 15000) // 15 секунд
                     }
                 }
-        }
-
-        val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress2)
-        val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword)
-        val checkBox = findViewById<CheckBox>(R.id.checkBox)
-
-        checkBox.setOnCheckedChangeListener { _, isChecked ->
-            val emailFilled = emailEditText.text.isNotBlank()
-            val passwordFilled = passwordEditText.text.isNotBlank()
-            if (isChecked && emailFilled && passwordFilled) {
-                logIn.isEnabled = true
-                logIn.backgroundTintList = getColorStateList(R.color.FullLog)
-            } else {
-                logIn.isEnabled = false
-                logIn.backgroundTintList = getColorStateList(R.color.EmptyLog)
-            }
         }
     }
 

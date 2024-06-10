@@ -2,6 +2,7 @@ package com.example.kursovaya
 
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -30,6 +31,26 @@ class sign_up : AppCompatActivity() {
         val phoneEditText = findViewById<EditText>(R.id.editTextPhone)
         val emailEditText = findViewById<EditText>(R.id.editTextTextEmailAddress)
         val passwordEditText = findViewById<EditText>(R.id.editTextTextPassword2)
+
+        signUpBtn2.isEnabled = false
+        signUpBtn2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.EmptyLog))
+
+        val checkBox = findViewById<CheckBox>(R.id.checkBoxes)
+
+        checkBox.setOnCheckedChangeListener { _, isChecked ->
+            val emailFilled = emailEditText.text.isNotBlank()
+            val passwordFilled = passwordEditText.text.isNotBlank()
+            val nameFilled = nameEditText.text.isNotBlank()
+            val phoneFilled = phoneEditText.text.isNotBlank()
+
+            if (isChecked && emailFilled && passwordFilled && nameFilled && phoneFilled) {
+                signUpBtn2.isEnabled = true
+                signUpBtn2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.FullLog))
+            } else {
+                signUpBtn2.isEnabled = false
+                signUpBtn2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.EmptyLog))
+            }
+        }
 
         signUpBtn2.setOnClickListener {
             val name = nameEditText.text.toString()
@@ -61,37 +82,11 @@ class sign_up : AppCompatActivity() {
                         Log.e("Registration", "Registration failed", task.exception)
                     }
                 }
-
-
-            val checkBox = findViewById<CheckBox>(R.id.checkBoxes)
-            // НИКИТА ПРОВЕРЬ ЭТОТ КОД, НЕ РАБОТАЕТ ОКРАШИВАНИЕ КНОПКИ ПОСЛЕ ВВОДА И ЧЕКА ЧЕКБОКСА!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            checkBox.setOnCheckedChangeListener { _, isChecked ->
-                val emailFilled = emailEditText.text.isNotBlank()
-                val passwordFilled = passwordEditText.text.isNotBlank()
-                val nameFilled = nameEditText.text.isNotBlank()
-                val phoneFilled = phoneEditText.text.isNotBlank()
-
-                if (isChecked && emailFilled && passwordFilled && nameFilled && phoneFilled) {
-                    signUpBtn2.isEnabled = true
-                    signUpBtn2.backgroundTintList = getColorStateList(R.color.FullLog)
-                } else {
-                    signUpBtn2.isEnabled = false
-                    signUpBtn2.backgroundTintList = getColorStateList(R.color.EmptyLog)
-                }
-            }
-
-
-            val signIn = findViewById<TextView>(R.id.signInBtn)
-            signIn.setOnClickListener {
-                startActivity(Intent(this, STwoLogIn_Activity::class.java))
-            }
-
-
         }
-        fun onClickLogIn(view: View) {
-            val intent = Intent(this, STwoLogIn_Activity::class.java)
-            startActivity(intent)
 
+        val signIn = findViewById<TextView>(R.id.signInBtn)
+        signIn.setOnClickListener {
+            startActivity(Intent(this, STwoLogIn_Activity::class.java))
         }
     }
 }
