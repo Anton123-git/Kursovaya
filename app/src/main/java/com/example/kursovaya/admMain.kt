@@ -2,7 +2,6 @@ package com.example.kursovaya
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -38,12 +37,13 @@ class admMain : AppCompatActivity() {
         val orders = findViewById<LinearLayout>(R.id.orders)
         orders.setOnClickListener {
             footerChange(2)
-            /*supportFragmentManager.beginTransaction()
-                .replace(R.id.frame, home())
-                .commit() */
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frame, Admin_AllOrders())
+                .commit()
         }
 
     }
+
 
 
     fun footerChange(number: Int) {
