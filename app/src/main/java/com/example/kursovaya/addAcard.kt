@@ -3,17 +3,15 @@ package com.example.kursovaya
 import android.content.Context
 import android.os.Bundle
 import android.text.Editable
-import androidx.fragment.app.Fragment
+import android.text.InputType
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.text.InputFilter
-import android.text.InputType
-import android.text.TextWatcher
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import android.widget.Toast
+import android.widget.EditText
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
@@ -105,7 +103,6 @@ class addAcard : Fragment() {
         cardNumber.inputType = InputType.TYPE_CLASS_NUMBER
         cardDate.inputType = InputType.TYPE_CLASS_NUMBER
         cardCVC.inputType = InputType.TYPE_CLASS_NUMBER
-
         val add = view.findViewById<Button>(R.id.add)
         add.setOnClickListener {
             // Получаем текст из полей
@@ -132,6 +129,8 @@ class addAcard : Fragment() {
                 cvc = cardCVCText ?: ""
             )
             db.child(cardId).setValue(card)
+
+
         }
 
         return view
