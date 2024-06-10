@@ -7,9 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+import java.text.SimpleDateFormat
+import java.util.Date
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,6 +61,67 @@ class send_a_package : Fragment() {
         val weight = view.findViewById<EditText>(R.id.weight)
         val worth = view.findViewById<EditText>(R.id.worth)
 
+        val btn = view.findViewById<CardView>(R.id.btn)
+        btn.setOnClickListener{
+            // Проверка на ввод
+            if (a_address.text.toString().isEmpty() || a_state.text.toString().isEmpty() || a_phone.text.toString().isEmpty()||  b_adsress.text.toString().isEmpty()
+                ||  b_state.text.toString().isEmpty() ||  b_phone.text.toString().isEmpty() ||  package_items.text.toString().isEmpty() || weight.text.toString().isEmpty()
+            ||worth.text.toString().isEmpty()){
+                Toast.makeText(context, "Поля не могут быть пустыми", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Получаем текст из полей
+            val a_address_text = a_address.text.toString()
+            val a_state_text = a_state.text.toString()
+            val a_phone_text = a_phone.text.toString()
+            val a_others_text = a_others.text.toString()
+            val b_adsress_text = b_adsress.text.toString()
+            val b_state_text = b_state.text.toString()
+            val b_phone_text = b_phone.text.toString()
+            val b_others_text = b_others.text.toString()
+            val package_items_text = package_items.text.toString()
+            val weight_text = weight.text.toString()
+            val worth_text = worth.text.toString()
+
+
+
+            // Получаем текущего пользователя
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            val userId = currentUser?.uid ?: ""
+            val currentDate = Date()
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val formattedDate = dateFormat.format(currentDate)
+
+            // Запись данных в Firebase Realtime Database
+            val db = FirebaseDatabase.getInstance().getReference("orders/$userId")
+            val orderid = db.push().key ?: ""
+            val order = AdminAllOrderItem(
+                id_order = orderid,
+                id_user = userId,
+                a_address = a_address_text,
+                a_state = a_state_text,
+                a_phone = a_phone_text,
+                a_others = a_others_text,
+                b_address = b_adsress_text,
+                b_state = b_state_text,
+                b_phone = b_phone_text,
+                b_others = b_others_text,
+                package_items = package_items_text,
+                weight = weight_text,
+                worth = worth_text,
+                date = formattedDate,
+                residence_status = 1,
+                c_name = ""
+
+            )
+            db.child(orderid).setValue(order)
+
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.frame, send_a_package_recepit())
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
         return view

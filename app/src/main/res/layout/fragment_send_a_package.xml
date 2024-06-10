@@ -349,6 +349,7 @@
                 android:orientation="horizontal">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btn"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_marginLeft="25dp"
