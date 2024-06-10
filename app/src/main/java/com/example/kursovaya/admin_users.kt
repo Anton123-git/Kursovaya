@@ -45,8 +45,8 @@ class admin_users : Fragment() {
     }
 
     private fun initRecyclerView() {
-        binding.rcViewUsers.layoutManager = LinearLayoutManager(context)
-        binding.rcViewUsers.adapter = adapter
+        binding.rcViewUsersD.layoutManager = LinearLayoutManager(context)
+        binding.rcViewUsersD.adapter = adapter
 
         // Инициализация данных
         val items = listOf(

@@ -12,6 +12,7 @@ constraintlayout = "2.1.4"
 gmsVersion = "4.4.2"
 bomVersion = "33.1.0"
 playServicesMaps = "18.2.0"
+firebaseAuthKtx = "23.0.0"
 
 [libraries]
 
@@ -27,6 +28,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
