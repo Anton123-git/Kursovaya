@@ -103,7 +103,7 @@ class STwoLogIn_Activity : AppCompatActivity() {
     }
 
     fun admAct(){
-        val intent = Intent(this, main::class.java)
+        val intent = Intent(this, admMain::class.java)
         startActivity(intent)
     }
 
