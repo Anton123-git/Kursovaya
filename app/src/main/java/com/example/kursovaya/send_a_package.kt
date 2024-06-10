@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -42,8 +43,23 @@ class send_a_package : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_send_a_package, container, false)
+        val view = inflater.inflate(R.layout.fragment_send_a_package, container, false)
+
+        val a_address = view.findViewById<EditText>(R.id.a_address)
+        val a_state = view.findViewById<EditText>(R.id.a_state)
+        val a_phone = view.findViewById<EditText>(R.id.a_phone)
+        val a_others = view.findViewById<EditText>(R.id.a_others)
+        val b_adsress = view.findViewById<EditText>(R.id.b_address)
+        val b_state = view.findViewById<EditText>(R.id.b_state)
+        val b_phone = view.findViewById<EditText>(R.id.b_phone)
+        val b_others = view.findViewById<EditText>(R.id.b_others)
+        val package_items = view.findViewById<EditText>(R.id.package_items)
+        val weight = view.findViewById<EditText>(R.id.weight)
+        val worth = view.findViewById<EditText>(R.id.worth)
+
+
+
+        return view
     }
 
 
