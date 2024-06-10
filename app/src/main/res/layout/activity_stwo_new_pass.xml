@@ -103,7 +103,9 @@
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
-            app:cornerRadius="4.69dp" />
+            app:cornerRadius="4.69dp"
+            android:enabled="false"/> <!-- Initially disabled -->
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

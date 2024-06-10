@@ -49,8 +49,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -62,8 +64,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -75,8 +79,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -88,8 +94,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -101,8 +109,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
 
             <Space
                 android:layout_width="wrap_content"
@@ -114,8 +124,10 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:background="@drawable/inputstyle"
-                android:ems="10"
-                android:inputType="text" />
+                android:gravity="center"
+                android:ems="1"
+                android:inputType="number"
+                android:maxLength="1" />
         </LinearLayout>
 
         <LinearLayout
@@ -141,17 +153,16 @@
                 android:textColor="#0560FA" />
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:backgroundTint="#0560FA"
             android:fontFamily="@font/roboto_medium"
+            android:background="@drawable/btn_signup_gray"
             android:text="Set New Password"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:cornerRadius="2dp" />
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
