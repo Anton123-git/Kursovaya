@@ -24,21 +24,16 @@ class  AdminAllOerdersAdapter : RecyclerView.Adapter<AdminAllOerdersAdapter.AAOr
 
         }
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AAOrdsHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ord_item, parent, false)
         return AAOrdsHolder(view)
     }
-
     override fun getItemCount(): Int {
         return aaordList.size
     }
-
     override fun onBindViewHolder(holder: AAOrdsHolder, position: Int) {
         holder.bind(aaordList[position])
     }
-
-
     fun updateDataAAOrd(newList: List<AdminAllOrderItem>) {
         aaordList.clear()
         aaordList.addAll(newList)

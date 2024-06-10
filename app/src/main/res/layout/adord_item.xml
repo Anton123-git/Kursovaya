@@ -43,7 +43,7 @@
                         android:id="@+id/tvIdOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="45"
+                        android:layout_weight="1"
                         android:fontFamily="@font/roboto_medium"
                         android:text="TextView"
                         android:textColor="#3A3A3A"
