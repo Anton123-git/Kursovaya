@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -105,6 +106,12 @@ class addAcard : Fragment() {
         cardCVC.inputType = InputType.TYPE_CLASS_NUMBER
         val add = view.findViewById<Button>(R.id.add)
         add.setOnClickListener {
+            // Проверка на ввод
+            if (cardNumber.text.toString().isEmpty() || cardDate.text.toString().isEmpty() || cardCVC.text.toString().isEmpty()) {
+                Toast.makeText(context, "Поля не могут быть пустыми", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
             // Получаем текст из полей
             val cardNumberText = cardNumber.text.toString()
             val cardDateText = cardDate.text.toString()
@@ -129,8 +136,6 @@ class addAcard : Fragment() {
                 cvc = cardCVCText ?: ""
             )
             db.child(cardId).setValue(card)
-
-
         }
 
         return view

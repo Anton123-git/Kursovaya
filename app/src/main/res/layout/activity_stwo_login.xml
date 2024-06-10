@@ -137,6 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_signup_gray"
+            android:backgroundTint="#0560FA"
             android:fontFamily="@font/roboto_bold"
             android:text="@string/btnlogin"
             android:textAllCaps="false"
