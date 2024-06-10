@@ -1,6 +1,6 @@
 package com.example.kursovaya
 
-data class CourierAllOerdersItem(
+data class Ordres(
     val userID: Int,
     val orderStatus: Int,
     val idPayment: Int,

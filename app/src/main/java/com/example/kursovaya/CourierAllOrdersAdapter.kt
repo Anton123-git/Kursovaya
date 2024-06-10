@@ -9,12 +9,12 @@ import com.example.kursovaya.databinding.OrdItemBinding
 
 class  CourierAllOrdersAdapter : RecyclerView.Adapter<CourierAllOrdersAdapter.CAOrdsHolder>() {
 
-    private val caordList = ArrayList<CourierAllOerdersItem>()
+    private val caordList = ArrayList<Ordres>()
 
     class CAOrdsHolder(item: View) : RecyclerView.ViewHolder(item) {
         val binding = OrdItemBinding.bind(item)
 
-        fun bind(caorderItem: CourierAllOerdersItem) = with(binding) {
+        fun bind(caorderItem: Ordres) = with(binding) {
             tvNameOrder.text = caorderItem.nameOrder
             tvTitle.text = caorderItem.title
             tvDate.text = caorderItem.date
@@ -35,7 +35,7 @@ class  CourierAllOrdersAdapter : RecyclerView.Adapter<CourierAllOrdersAdapter.CA
         holder.bind(caordList[position])
     }
 
-    fun updateDataCAOrd(newList: List<CourierAllOerdersItem>) {
+    fun updateDataCAOrd(newList: List<Ordres>) {
         caordList.clear()
         caordList.addAll(newList)
         notifyDataSetChanged()

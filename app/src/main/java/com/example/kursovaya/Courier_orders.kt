@@ -50,11 +50,11 @@ class Courier_orders : Fragment() {
 
         // Инициализация данных
         val items = listOf(
-            CourierAllOerdersItem(1, 1, 1, "Резиновая баба", "С автоотсосом, и настоящей вагиной", "July 7, 2022"),
-            CourierAllOerdersItem(1, 1, 2, "Варенье", "С малиной", "July 7, 2022"),
-            CourierAllOerdersItem(1, 1, 3, "Фонарик", "Чисто вместо лампочки", "July 7, 2022"),
-            CourierAllOerdersItem(1, 1, 4, "Зипка Setner", "Залупа но пойдет", "July 7, 2022"),
-            CourierAllOerdersItem(1, 1, 5, "Комплект ФСО и СГУ", "Сута жи ес", "July 7, 2022"),
+            Ordres(1, 1, 1, "Резиновая баба", "С автоотсосом, и настоящей вагиной", "July 7, 2022"),
+            Ordres(1, 1, 2, "Варенье", "С малиной", "July 7, 2022"),
+            Ordres(1, 1, 3, "Фонарик", "Чисто вместо лампочки", "July 7, 2022"),
+            Ordres(1, 1, 4, "Зипка Setner", "Залупа но пойдет", "July 7, 2022"),
+            Ordres(1, 1, 5, "Комплект ФСО и СГУ", "Сута жи ес", "July 7, 2022"),
 
         )
         adapter.updateDataCAOrd(items)

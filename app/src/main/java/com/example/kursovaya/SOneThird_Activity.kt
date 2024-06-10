@@ -13,7 +13,7 @@ class SOneThird_Activity : AppCompatActivity() {
     }
 
     fun onClickNextAct(view: View){
-        val intent = Intent(this, STwoSignUp_Activity::class.java)
+        val intent = Intent(this, sign_up::class.java)
         startActivity(intent)
 
     }

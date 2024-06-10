@@ -27,7 +27,7 @@
             android:name=".main"
             android:exported="false" />
         <activity
-            android:name=".STwoSignUp_Activity"
+            android:name=".sign_up"
             android:exported="false" />
         <activity
             android:name=".STwoOTPVerif_Activity"
