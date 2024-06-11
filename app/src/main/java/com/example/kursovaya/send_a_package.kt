@@ -88,7 +88,7 @@ class send_a_package : Fragment() {
 
             // Получаем текущего пользователя
             val currentUser = FirebaseAuth.getInstance().currentUser
-            val userId = currentUser?.uid ?: ""
+            val userId = currentUser?.uid ?: "" 
             val currentDate = Date()
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
             val formattedDate = dateFormat.format(currentDate)
