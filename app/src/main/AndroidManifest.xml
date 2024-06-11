@@ -9,10 +9,19 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@color/white"
-        android:roundIcon="@drawable/your_splash_background"
+        android:roundIcon="@drawable/ic_errortoast"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kursovaya"
         tools:targetApi="31">
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".admMain"
             android:exported="false" />
@@ -45,13 +54,7 @@
             android:exported="false" />
         <activity
             android:name=".SOneFirst_Activity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -74,14 +74,14 @@ class admin_users : Fragment() {
 
         // Инициализация данных
         val items = listOf(
-            UserItem("Anton Gandon", "zaebis", 1, 1),
-            UserItem("Vlad Ebanat", "zaebis", 2, 3),
-            UserItem("Ovcut Rahal", "zaebis", 3, 2),
-            UserItem("Mamut Rahal", "zaebis", 4, 1),
-            UserItem("Jechka Dirova", "zaebis", 5, 2),
-            UserItem("Vitalya CallOfDuty", "zaebis", 6, 1),
-            UserItem("Duty Free", "zaebis", 7, 2),
-            UserItem("Super Man", "zaebis", 8, 2),
+            UserItem("Anton Shagin", "+79502439232", 1, 1),
+            UserItem("Vlad Kapustin", "+79502439232", 2, 3),
+            UserItem("David Smirnov", "+79502439232", 3, 2),
+            UserItem("Nikolay Zikov", "+79502439232", 4, 1),
+            UserItem("Vitaliy Somokovsky", "+79502439232", 5, 2),
+            UserItem("Vitalya CallOfDuty", "+79502439232", 6, 1),
+            UserItem("Duty Free", "+79502439232", 7, 2),
+            UserItem("Super Man", "+79502439232", 8, 2),
             )
         adapter.updateDataUser(items)
     }

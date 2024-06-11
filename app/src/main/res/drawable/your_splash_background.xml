@@ -4,6 +4,7 @@
     <item>
         <bitmap
             android:gravity="fill"
-            android:src="@drawable/icon"/>
+            android:src="@drawable/ic_errortoast">
+        </bitmap>
     </item>
 </layer-list>
