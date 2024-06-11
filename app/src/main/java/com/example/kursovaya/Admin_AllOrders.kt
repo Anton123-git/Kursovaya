@@ -67,9 +67,12 @@ class Admin_AllOrders : Fragment(), OnItemClickListener {
             putString("id_order", item.id_order)
             putString("package_items", item.package_items)
             putString("date", item.date)
+            //Тут те данные которые парсятся из списка на экран информаци заказа
+
+
             // добавьте остальные данные
         }
-        val fragment = admin_order()
+        val fragment = admin_order() // на какой фрагмент уходят данные
         fragment.arguments = bundle
 
         requireActivity().supportFragmentManager.beginTransaction()

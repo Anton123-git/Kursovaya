@@ -41,7 +41,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvIdOrder"
+                        android:id="@+id/tvNameOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="45"
@@ -58,7 +58,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/tvPackInfo"
+                        android:id="@+id/tvTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

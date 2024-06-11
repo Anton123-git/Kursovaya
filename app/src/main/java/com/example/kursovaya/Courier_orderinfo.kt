@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.kursovaya.databinding.FragmentCourierOrderinfoBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,6 +18,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class Courier_orderinfo : Fragment() {
+
+    private lateinit var binding: FragmentCourierOrderinfoBinding
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +38,21 @@ class Courier_orderinfo : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_courier_orderinfo, container, false)
+
+        binding = FragmentCourierOrderinfoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val args = arguments
+        args?.let {
+            binding.tvOrderId.text = it.getString("id_order")
+            binding.tvPackageInfo.text = it.getString("package_items")
+            binding.tvDate.text = it.getString("date")
+            // добавьте остальные данные
+        }
     }
 
     companion object {

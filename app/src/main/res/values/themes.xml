@@ -16,4 +16,9 @@
         <item name="colorAccent">#0560FA</item>
         <item name="android:textColorPrimary">#0560FA</item>
     </style>
+
+    <style name="checkBoxStyle" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorSecondary">#0560FA</item>
+    </style>
 </resources>

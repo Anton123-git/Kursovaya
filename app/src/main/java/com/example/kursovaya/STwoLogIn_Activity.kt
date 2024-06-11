@@ -71,8 +71,10 @@ class STwoLogIn_Activity : AppCompatActivity() {
                                             userAct()
                                         } else if(userState == 2){
                                             admAct()
+                                        } else if(userState == 3){
+                                            curAct()
                                         } else {
-                                            // Handle the case where the user's status is neither 1 nor 2
+                                            // Handle the case where the user's status is neither 1 nor 2 and 3
                                         }
                                     }
                                 }
@@ -92,7 +94,7 @@ class STwoLogIn_Activity : AppCompatActivity() {
                             supportFragmentManager.beginTransaction()
                                 .remove(Error_frag())
                                 .commit()
-                        }, 15000) // 15 секунд
+                        }, 1) // 15 секунд
                     }
                 }
         }
@@ -102,9 +104,13 @@ class STwoLogIn_Activity : AppCompatActivity() {
         val intent = Intent(this, main::class.java)
         startActivity(intent)
     }
-
     fun admAct(){
         val intent = Intent(this, admMain::class.java)
+        startActivity(intent)
+    }
+
+    fun curAct(){
+        val intent = Intent(this, curMain::class.java)
         startActivity(intent)
     }
 
