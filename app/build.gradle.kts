@@ -44,6 +44,7 @@ android {
 dependencies {
 
     implementation("com.google.firebase:firebase-database")
+
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation(libs.androidx.core.ktx)
     implementation(platform(libs.firebase.bom))

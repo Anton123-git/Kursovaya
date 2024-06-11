@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="FullLog">
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+    </style>
+    <style name="EmptyLog">
+        <item name="android:backgroundTint">@color/EmptyLog</item>
+    </style>
+</resources>

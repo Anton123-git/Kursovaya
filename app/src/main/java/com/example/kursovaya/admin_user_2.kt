@@ -42,6 +42,8 @@ class admin_user_2 : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentAdminInfoForOneUserBinding.inflate(inflater, container, false)
         return binding.root
+
+        initRecyclerView()
     }
 
     private fun initRecyclerView() {

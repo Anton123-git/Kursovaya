@@ -3,24 +3,24 @@
     android:height="108dp"
     android:viewportWidth="154"
     android:viewportHeight="154">
-  <group android:scaleX="0.71"
-      android:scaleY="0.71"
-      android:translateX="22.33"
-      android:translateY="22.33">
+  <group android:scaleX="0.87"
+      android:scaleY="0.87"
+      android:translateX="10.01"
+      android:translateY="10.01">
     <path
-        android:pathData="M17,0L137,0A17,17 0,0 1,154 17L154,137A17,17 0,0 1,137 154L17,154A17,17 0,0 1,0 137L0,17A17,17 0,0 1,17 0z"
+        android:pathData="M77,0L77,0A77,77 0,0 1,154 77L154,77A77,77 0,0 1,77 154L77,154A77,77 0,0 1,0 77L0,77A77,77 0,0 1,77 0z"
         android:fillColor="#0560FA"/>
     <path
-        android:pathData="M126.69,67.53V87.3L108.75,77.42L95.62,70.18L90.81,67.53L72.88,57.65L64.54,53.07L54.94,47.77L37,37.88L40.53,35.95L54.94,28L69.34,35.95L72.88,37.88L90.81,47.77L100.42,53.07L108.75,57.65L126.69,67.53Z"
+        android:pathData="M125.69,67.53V87.3L107.75,77.42L94.62,70.18L89.81,67.53L71.88,57.65L63.54,53.07L53.94,47.77L36,37.88L39.53,35.95L53.94,28L68.34,35.95L71.88,37.88L89.81,47.77L99.42,53.07L107.75,57.65L125.69,67.53Z"
         android:fillColor="#ffffff"/>
     <path
-        android:pathData="M126.69,87.3L108.75,97.14L95.61,104.38L90.81,107.03L86.01,104.38L72.88,97.14L90.81,87.3V87.26L126.69,67.53V87.3Z"
+        android:pathData="M125.69,87.3L107.75,97.14L94.61,104.38L89.81,107.03L85.01,104.38L71.88,97.14L89.81,87.3V87.26L125.69,67.53V87.3Z"
         android:fillColor="#F3F3F3"/>
     <path
-        android:pathData="M72.88,77.42L54.94,87.26V126.79L45.33,121.49L37,116.91V57.65L54.94,67.53L59.74,70.18L72.88,77.42Z"
+        android:pathData="M71.88,77.42L53.94,87.26V126.79L44.33,121.49L36,116.91V57.65L53.94,67.53L58.74,70.18L71.88,77.42Z"
         android:fillColor="#ffffff"/>
     <path
-        android:pathData="M72.88,116.91L64.54,121.49L54.94,126.79V107.03L72.88,116.91Z"
+        android:pathData="M71.88,116.91L63.54,121.49L53.94,126.79V107.03L71.88,116.91Z"
         android:fillColor="#ffffff"/>
   </group>
 </vector>

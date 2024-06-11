@@ -1,9 +1,11 @@
 package com.example.kursovaya
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowInsetsController
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kursovaya.databinding.FragmentAdminUsersBinding
@@ -44,7 +46,29 @@ class admin_users : Fragment() {
         return binding.root
     }
 
-    private fun initRecyclerView() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Установите белый цвет для статус-бара
+        activity?.window?.statusBarColor = resources.getColor(android.R.color.white, requireActivity().theme)
+
+        // Установите темные символы для статус-бара
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            activity?.window?.insetsController?.setSystemBarsAppearance(
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS,
+                WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS
+            )
+        } else {
+            @Suppress("DEPRECATION")
+            activity?.window?.decorView?.systemUiVisibility = View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
+
+        // Инициализация RecyclerView
+        initRecyclerViewA()
+
+    }
+
+    private fun initRecyclerViewA() {
         binding.rcViewUsersD.layoutManager = LinearLayoutManager(context)
         binding.rcViewUsersD.adapter = adapter
 
