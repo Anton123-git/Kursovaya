@@ -18,10 +18,10 @@ private const val ARG_PARAM2 = "param2"
  * Use the [Courier_orders.newInstance] factory method to
  * create an instance of this fragment.
  */
-class Courier_orders : Fragment() {
+class Courier_orders : Fragment(), OnItemClickListenerC {
 
     private lateinit var binding: FragmentCourierOrdersBinding
-    private val adapter = CourierAllOrdersAdapter()
+    private lateinit var adapter: CourierAllOrdersAdapter
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -43,18 +43,23 @@ class Courier_orders : Fragment() {
         binding = FragmentCourierOrdersBinding.inflate(inflater, container, false)
         return binding.root
     }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initRecyclerViewC()
+    }
 
-    private fun initRecyclerView() {
+    private fun initRecyclerViewC() {
+        adapter = CourierAllOrdersAdapter(this)
         binding.rcViewAllOrders.layoutManager = LinearLayoutManager(context)
         binding.rcViewAllOrders.adapter = adapter
 
         // Инициализация данных
         val items = listOf(
-            Ordres(1, 1, 1, "Резиновая баба", "С автоотсосом, и настоящей вагиной", "July 7, 2022"),
-            Ordres(1, 1, 2, "Варенье", "С малиной", "July 7, 2022"),
-            Ordres(1, 1, 3, "Фонарик", "Чисто вместо лампочки", "July 7, 2022"),
-            Ordres(1, 1, 4, "Зипка Setner", "Залупа но пойдет", "July 7, 2022"),
-            Ordres(1, 1, 5, "Комплект ФСО и СГУ", "Сута жи ес", "July 7, 2022"),
+            Ordres("1", "1", "ул. Пушкина, д. 1", "Кострома", "8800552476", "там гречка еблан", "улица пушкина дом колотушкина", "Кострома", "+79109203434", "я долбаеб", "гречка","2kg","1000","2024-04-01", 1 , "VItalya CallOfDuty"),
+            Ordres("2", "43", "ул. Пушкина, д. 2", "Кострома", "8874578", "там стекло еблан", "улица пушкина дом 2", "Кострома", "+79109203454", "я долбаеб", "фары","2kg","1000","2024-04-01", 1 , "VItalya CallOfDuty"),
+            Ordres("3", "56", "ул. Пушкина, д. 3", "Кострома", "68845784", "там метал еблан", "улица пушкина дом 3", "Кострома", "+7934556434", "я не долбаеб", "гаечные ключи","2kg","1000","2024-04-01", 1 , "VItalya CallOfDuty"),
+            Ordres("4", "2", "ул. Пушкина, д. 4", "Кострома", "880034578", "там клава еблан", "улица пушкина дом 4", "Кострома", "+79105666634", "я лох", "клавиатура","2kg","1000","2024-04-01", 1 , "VItalya CallOfDuty"),
+            Ordres("5", "87", "ул. Пушкина, д. 5", "Кострома", "82345535", "там монитор еблан", "улица пушкина дом 5", "Кострома", "+79144556634", "я", "монитор","2kg","1000","2024-04-01", 1 , "VItalya CallOfDuty"),
 
         )
         adapter.updateDataCAOrd(items)
@@ -79,4 +84,25 @@ class Courier_orders : Fragment() {
                 }
             }
     }
+
+    override fun onInfoClickС(item: Ordres) {
+        val bundle = Bundle().apply {
+            putString("id_order", item.id_order)
+            putString("package_items", item.package_items)
+            putString("date", item.date)
+            //Тут те данные которые парсятся из списка на экран информаци заказа
+
+
+            // добавьте остальные данные
+        }
+        val fragment = Courier_orderinfo() // на какой фрагмент уходят данные
+        fragment.arguments = bundle
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.frame, fragment)
+            .addToBackStack(null)
+            .commit()
+    }
+
+
 }

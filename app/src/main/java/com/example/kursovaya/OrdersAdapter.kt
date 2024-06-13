@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kursovaya.databinding.OrdItemBinding
+import com.example.kursovaya.databinding.OrdersItemsBinding
 
 
 class  OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdHolder>() {
@@ -13,7 +13,7 @@ class  OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdHolder>() {
     private val ordList = ArrayList<OrderItem>()
 
     class OrdHolder(item: View) : RecyclerView.ViewHolder(item) {
-        val binding = OrdItemBinding.bind(item)
+        val binding = OrdersItemsBinding.bind(item)
 
         fun bind(orderItem: OrderItem) = with(binding) {
             tvNameOrder.text = orderItem.nameOrder
@@ -35,7 +35,7 @@ class  OrdersAdapter : RecyclerView.Adapter<OrdersAdapter.OrdHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrdHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.ord_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.orders_items, parent, false)
         return OrdHolder(view)
     }
 

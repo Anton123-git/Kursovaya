@@ -7,17 +7,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.kursovaya.databinding.OrdItemBinding
 
 
-class  CourierAllOrdersAdapter : RecyclerView.Adapter<CourierAllOrdersAdapter.CAOrdsHolder>() {
+class  CourierAllOrdersAdapter(private val listenerC: OnItemClickListenerC) : RecyclerView.Adapter<CourierAllOrdersAdapter.CAOrdsHolder>() {
 
     private val caordList = ArrayList<Ordres>()
 
-    class CAOrdsHolder(item: View) : RecyclerView.ViewHolder(item) {
+    inner class CAOrdsHolder(item: View) : RecyclerView.ViewHolder(item) {
         val binding = OrdItemBinding.bind(item)
 
-        fun bind(caorderItem: Ordres) = with(binding) {
-            tvNameOrder.text = caorderItem.nameOrder
-            tvTitle.text = caorderItem.title
-            tvDate.text = caorderItem.date
+        fun bind(ordres: Ordres) = with(binding) {
+            tvIdOrder.text = ordres.id_order
+            tvPackInfo.text = ordres.package_items
+            tvDate.text = ordres.date
+
+            linInfo.setOnClickListener {
+                listenerC.onInfoClickС(ordres)
+            }
 
         }
     }
@@ -40,4 +44,8 @@ class  CourierAllOrdersAdapter : RecyclerView.Adapter<CourierAllOrdersAdapter.CA
         caordList.addAll(newList)
         notifyDataSetChanged()
     }
+}
+
+interface OnItemClickListenerC {
+    fun onInfoClickС(item: Ordres)
 }
