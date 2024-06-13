@@ -70,7 +70,6 @@ class send_a_package : Fragment() {
                 Toast.makeText(context, "Поля не могут быть пустыми", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
-
             // Получаем текст из полей
             val a_address_text = a_address.text.toString()
             val a_state_text = a_state.text.toString()
@@ -97,8 +96,7 @@ class send_a_package : Fragment() {
             val db = FirebaseDatabase.getInstance().getReference("orders/$userId")
             val orderid = db.push().key ?: ""
             val order = AdminAllOrderItem(
-                id_order = orderid,
-                id_user = userId,
+                id = orderid,
                 a_address = a_address_text,
                 a_state = a_state_text,
                 a_phone = a_phone_text,
@@ -111,8 +109,8 @@ class send_a_package : Fragment() {
                 weight = weight_text,
                 worth = worth_text,
                 date = formattedDate,
-                residence_status = 1,
-                c_name = ""
+                residence_status = "1",
+                c_name = "",
 
             )
             db.child(orderid).setValue(order)
