@@ -14,7 +14,7 @@ class AdminAllOerdersAdapter(private val listener: OnItemClickListener) : Recycl
         val binding = AdordItemBinding.bind(item)
 
         fun bind(aaorderItem: AdminAllOrderItem) = with(binding) {
-            tvIdOrder.text = aaorderItem.id_order
+            tvIdOrder.text = aaorderItem.id
             tvPackageInfo.text = aaorderItem.package_items
             tvDate.text = aaorderItem.date
 
@@ -42,6 +42,10 @@ class AdminAllOerdersAdapter(private val listener: OnItemClickListener) : Recycl
         aaordList.addAll(newList)
         notifyDataSetChanged()
     }
+
+
+
+
 }
 
 

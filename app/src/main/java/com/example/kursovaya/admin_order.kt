@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.kursovaya.databinding.FragmentAdminInfoForOneOrderBinding
 
@@ -17,6 +18,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [admin_order.newInstance] factory method to
  * create an instance of this fragment.
  */
+@Suppress("UNREACHABLE_CODE")
 class admin_order : Fragment() {
 
     private lateinit var binding: FragmentAdminInfoForOneOrderBinding
@@ -38,15 +40,18 @@ class admin_order : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
+        val view = inflater.inflate(R.layout.fragment_admin_info_for_one_order, container, false)
         binding = FragmentAdminInfoForOneOrderBinding.inflate(inflater, container, false)
         return binding.root
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val back = view.findViewById<ImageView>(R.id.back)
+        back.setOnClickListener {
+            fragmentManager?.popBackStack()
+        }
 
         val args = arguments
         args?.let {
