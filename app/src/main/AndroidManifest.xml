@@ -29,6 +29,9 @@
             android:name=".password"
             android:exported="false" />
         <activity
+            android:name=".curMain"
+            android:exported="false" />
+        <activity
             android:name=".main"
             android:exported="false" />
         <activity
